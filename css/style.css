@@ -4,7 +4,8 @@ html, body {
     font-family: 'Karla', sans-serif;
     padding: 0px;
     margin: 0px;
-    background-color: #CFCFCF;
+    background: url("https://wallpaperplay.com/walls/full/9/c/c/29929.jpg");
+    color: white;
 }
 
 div.outside {
@@ -13,12 +14,12 @@ div.outside {
     height: 100%;
 }
 
-div.content {
+.content {
     text-align: center;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+    margin: 0 auto;
     padding-bottom: 10%;
+    border: none;
+    width: 80%;
 }
 
 img.main-img {
@@ -72,9 +73,10 @@ h3.subtext {
 }
 
 a {
-    color: black;
     padding-bottom: 2px;
     text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
 
 a:hover {
