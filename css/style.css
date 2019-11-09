@@ -4,8 +4,8 @@ html, body {
     font-family: 'Karla', sans-serif;
     padding: 0px;
     margin: 0px;
-    background: url("https://wallpaperplay.com/walls/full/9/c/c/29929.jpg");
-    color: white;
+    background: darkgray;
+    margin-top: 10%;
 }
 
 div.outside {
@@ -17,9 +17,8 @@ div.outside {
 .content {
     text-align: center;
     margin: 0 auto;
-    padding-bottom: 10%;
-    border: none;
-    width: 80%;
+    width: 62%;
+    border-color: darkblue;
 }
 
 img.main-img {
@@ -75,7 +74,6 @@ h3.subtext {
 a {
     padding-bottom: 2px;
     text-decoration: none;
-    color: white;
     font-weight: bold;
 }
 

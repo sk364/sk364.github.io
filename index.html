@@ -97,4 +97,23 @@
             </table>
         </div>
     </body>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var tableEl = $('table');
+            var allCols = tableEl.find('td');
+            var iSum = 0, eSum = 0, tDays = allCols.length / 3;
+            var idx = 0;
+            for (var col of allCols) {
+                iSum += allCols[1 + (idx * 3)].textContent==="Y" ? 1 : 0;
+                eSum += allCols[2 + (idx * 3)].textContent==="Y" ? 1 : 0;
+                idx++;
+                if (idx === tDays)
+                    break;
+            }
+            var tbodyEl = tableEl.find('tbody');
+            tbodyEl.append('<tr><th>' + tDays + ' Days</th><td>' + iSum + '</td><td>' + eSum + '</td></tr>');
+        });
+    </script>
 </html>
