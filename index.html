@@ -76,7 +76,7 @@
                     <tr>
                         <td>Nov 05, 2019</td>
                         <td>Y</td>
-                        <td>N</td>
+                        <td>Y</td>
                     </tr>
                     <tr>
                         <td>Nov 06, 2019</td>
@@ -93,6 +93,11 @@
                         <td>N</td>
                         <td>Y</td>
                     </tr>
+                    <tr>
+                        <td>Nov 09, 2019</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -104,16 +109,34 @@
             var tableEl = $('table');
             var allCols = tableEl.find('td');
             var iSum = 0, eSum = 0, tDays = allCols.length / 3;
+            var iStreak = 1, eStreak = 1;
+            var maxIStreak = 0, maxEStreak = 0;
             var idx = 0;
             for (var col of allCols) {
-                iSum += allCols[1 + (idx * 3)].textContent==="Y" ? 1 : 0;
-                eSum += allCols[2 + (idx * 3)].textContent==="Y" ? 1 : 0;
+                var iVal = allCols[1 + (idx * 3)].textContent==="Y" ? 1 : 0;
+                var eVal = allCols[2 + (idx * 3)].textContent==="Y" ? 1 : 0;
+                iSum += iVal;
+                eSum += eVal;
+
+                if (idx > 0) {
+                    iStreak = iVal === 1 ? iStreak + 1 : 0;
+                    eStreak = eVal === 1 ? eStreak + 1 : 0;
+                }
+
+                if (iStreak > maxIStreak)
+                    maxIStreak = iStreak;
+                if (eStreak > maxEStreak)
+                    maxEStreak = eStreak;
+
+                prevIVal = iVal;
+                prevEVal = eVal;
                 idx++;
                 if (idx === tDays)
                     break;
             }
             var tbodyEl = tableEl.find('tbody');
             tbodyEl.append('<tr><th>' + tDays + ' Days</th><td>' + iSum + '</td><td>' + eSum + '</td></tr>');
+            tbodyEl.append('<tr><th>Best Streak</th><td>' + maxIStreak + '</td><td>' + maxEStreak + '</td></tr>');
         });
     </script>
 </html>
