@@ -98,6 +98,26 @@
                         <td>Y</td>
                         <td>Y</td>
                     </tr>
+                    <tr>
+                        <td>Nov 10, 2019</td>
+                        <td>Y</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 11, 2019</td>
+                        <td>N</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 12, 2019</td>
+                        <td>N</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>Nov 13, 2019</td>
+                        <td>Y</td>
+                        <td>N</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -105,38 +125,65 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
+        var seasonLength = 10;
+        var numBonusDays = 5;
+        var numPunishDays = 3;
+
         $(document).ready(function() {
             var tableEl = $('table');
             var allCols = tableEl.find('td');
-            var iSum = 0, eSum = 0, tDays = allCols.length / 3;
-            var iStreak = 1, eStreak = 1;
-            var maxIStreak = 0, maxEStreak = 0;
-            var idx = 0;
-            for (var col of allCols) {
-                var iVal = allCols[1 + (idx * 3)].textContent==="Y" ? 1 : 0;
-                var eVal = allCols[2 + (idx * 3)].textContent==="Y" ? 1 : 0;
-                iSum += iVal;
-                eSum += eVal;
+            var numRows = allCols.length / 3;
+            var seasonScores = [];
+            for (var i=0; i < numRows / seasonLength; i++) {
+                var iSum = eSum = 0;
+                var piStreak = peStreak = 0;
+                var niStreak = neStreak = 0;
+                for (var j=0; j < seasonLength; j++) {
+                    var iCol = allCols[((i*seasonLength + j)*3) + 1];
+                    var eCol = allCols[((i*seasonLength + j)*3) + 2];
+                    if (!iCol || !eCol)
+                        continue;
+                    var iVal = 0;
+                    var eVal = 0;
+                    if (iCol.textContent==="Y")
+                        iVal++;
+                    else if (iCol.textContent==="N")
+                        iVal--;
+                    if (eCol.textContent==="Y")
+                        eVal++;
+                    else if (eCol.textContent==="N")
+                        eVal--;
 
-                if (idx > 0) {
-                    iStreak = iVal === 1 ? iStreak + 1 : 0;
-                    eStreak = eVal === 1 ? eStreak + 1 : 0;
+                    piStreak = iVal===1 ? piStreak+1 : 0;
+                    peStreak = eVal===1 ? peStreak+1 : 0;
+                    niStreak = iVal===-1 ? niStreak+1 : 0;
+                    neStreak = eVal===-1 ? neStreak+1 : 0;
+
+                    var iBonus = piStreak-numBonusDays > 0 ?
+                        Math.pow(2, piStreak-numBonusDays) - 1 : 0;
+                    var iPunish = niStreak-numPunishDays > 0 ?
+                        Math.pow(2, niStreak-numPunishDays) - 1 : 0;
+                    var eBonus = peStreak-numBonusDays > 0 ?
+                        Math.pow(2, peStreak-numBonusDays) - 1 : 0;
+                    var ePunish = neStreak-numPunishDays > 0 ?
+                        Math.pow(2, neStreak-numPunishDays) - 1 : 0;
+
+                    iSum += iVal + iBonus - iPunish;
+                    eSum += eVal + eBonus - ePunish;
                 }
-
-                if (iStreak > maxIStreak)
-                    maxIStreak = iStreak;
-                if (eStreak > maxEStreak)
-                    maxEStreak = eStreak;
-
-                prevIVal = iVal;
-                prevEVal = eVal;
-                idx++;
-                if (idx === tDays)
-                    break;
+                seasonScores.push([iSum, eSum]);
             }
-            var tbodyEl = tableEl.find('tbody');
-            tbodyEl.append('<tr><th>' + tDays + ' Days</th><td>' + iSum + '</td><td>' + eSum + '</td></tr>');
-            tbodyEl.append('<tr><th>Best Streak</th><td>' + maxIStreak + '</td><td>' + maxEStreak + '</td></tr>');
+            var offset = 1;
+            var iTotal = eTotal = 0;
+            seasonScores.forEach(function(scores, idx) {
+                $('tbody > tr').eq(((idx + 1) * seasonLength) - offset).after(
+                    '<tr><th>Season ' + (idx + 1) + '</th><th>' + scores[0] + '</th><th>' + scores[1] + '</th></tr>'
+                );
+                offset--;
+                iTotal += scores[0];
+                eTotal += scores[1];
+            });
+            $('tbody').append('<tr><th>Total Score</th><th>' + iTotal + '</th><th>' + eTotal + '</th></tr>')
         });
     </script>
 </html>
