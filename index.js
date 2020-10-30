@@ -1,5 +1,9 @@
 (function() {
   const choiceMap = {
+    1: {
+      texts: ["Better", "Worse"],
+      paths: [2, 3]
+    },
     2: {
       texts: ["Left", "Right"],
       paths: [4, 5]
