@@ -59,14 +59,16 @@
 
       const partStr = params['src'].split('.')[0];
       const curPartNum = parseInt(partStr[partStr.length - 1]);
-      const { paths, texts } = choiceMap[curPartNum];
-      const [leftPartNum, rightPartNum] = paths;
-      const [leftPartText, rightPartText] = texts;
+      if (finalStates.indexOf(curPartNum) === -1) {
+        const { paths, texts } = choiceMap[curPartNum];
+        const [leftPartNum, rightPartNum] = paths;
+        const [leftPartText, rightPartText] = texts;
 
-      leftBtn.data('link', `part${leftPartNum}.mp4`);
-      rightBtn.data('link', `part${rightPartNum}.mp4`);
-      leftBtn.text(leftPartText);
-      rightBtn.text(rightPartText);
+        leftBtn.data('link', `part${leftPartNum}.mp4`);
+        rightBtn.data('link', `part${rightPartNum}.mp4`);
+        leftBtn.text(leftPartText);
+        rightBtn.text(rightPartText);
+      }
     }
   });
 
