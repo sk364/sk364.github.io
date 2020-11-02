@@ -1,18 +1,19 @@
 (function() {
   const choiceMap = {
     1: {
-      texts: ["Better", "Worse"],
+      texts: ["Pick Lago's call", "Do not pick Lago's call"],
       paths: [2, 3]
     },
     2: {
-      texts: ["Left", "Right"],
+      texts: ["Take Lago's advice", "Do not take Lago's advice"],
       paths: [4, 5]
     },
     3: {
-      texts: ["Dead", "Alive"],
-      paths: [6, 7]
+      texts: ["Meet Deside's dad", "Don't meet Deside's dad"],
+      paths: [5, 4]
     }
   };
+  const finalStates = [4, 5];
 
   $('document').ready(function() {
     const query = window.location.href.split('?');
@@ -43,9 +44,13 @@
     }
 
     video[0].onended = function() {
-      video.hide();
-      image.show();
-      choices.show();
+      const partStr = params['src'].split('.')[0];
+      const curPartNum = parseInt(partStr[partStr.length - 1]);
+      if (finalStates.indexOf(curPartNum) === -1) {
+        video.hide();
+        image.show();
+        choices.show();
+      }
     }
 
     if (params['src']) {
