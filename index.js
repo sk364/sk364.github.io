@@ -44,7 +44,7 @@
     }
 
     video[0].onended = function() {
-      const partStr = params['src'].split('.')[0];
+      const partStr = (params['src'] || 'part1.mp4').split('.')[0];
       const curPartNum = parseInt(partStr[partStr.length - 1]);
       if (finalStates.indexOf(curPartNum) === -1) {
         video.hide();
