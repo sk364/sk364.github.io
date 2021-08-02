@@ -1,11 +1,10 @@
 .nav-bar {
   display: flex;
   justify-content: space-between;
-  padding: 0 100px;
+  padding: 0 60px;
   height: 50px;
   background: #515151;
   color: white;
-  border-radius: 46px;
 }
 
 .nav-bar .nav-items {
@@ -15,6 +14,7 @@
 
 .nav-bar .brand {
   align-self: center;
+  cursor: pointer;
 }
 
 .nav-bar .nav-items .nav-item {

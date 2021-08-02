@@ -19,21 +19,20 @@ const NavBar = () => {
     route: "/contact"
   }];
 
-  const handleChangePage = (itemId) => {
-    const item = items.find(item => item.id === itemId);
-    if (item) history.push(item.route);
+  const handleChangePage = (route) => {
+    history.push(route);
   };
 
   return (
     <div className="nav-bar">
-      <div className="brand">
+      <div className="brand" onClick={() => handleChangePage("/")}>
         @sk364
       </div>
 
       <div className="nav-items">
         {items.map(item => {
           return (
-            <div className="nav-item" key={item.id} onClick={() => handleChangePage(item.id)}>
+            <div className="nav-item" key={item.id} onClick={() => handleChangePage(item.route)}>
               { item.name }
             </div>
           );

@@ -12,9 +12,9 @@ const App = () => {
   return (
     <HashRouter basename="/">
       <Route exact path="/" component={Home} />
-      <Route exact path="/" component={ProjectList} />
-      <Route exact path="/" component={Logs} />
-      <Route exact path="/" component={Contact} />
+      <Route exact path="/projects" component={ProjectList} />
+      <Route exact path="/logs" component={Logs} />
+      <Route exact path="/contact" component={Contact} />
     </HashRouter>
   );
 }
