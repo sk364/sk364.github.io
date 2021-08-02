@@ -1,0 +1,44 @@
+.post-view {
+  cursor: pointer;
+  color: #777;
+  margin: 1.5% 3% 1.5% 3%;
+}
+
+.post-view span {
+  margin-right: 5px;
+}
+
+.post-view span.right-circle:after {
+  content: ' \25CF ';
+  font-size: 10px;
+  margin-left: 3px;
+}
+
+.post-view span.title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.post-view span.date {
+  float: right;
+}
+
+.post-view span.reading-time {
+  float: right;
+}
+
+.post-view span.bait {
+  
+}
+
+.post-view span.tags {
+  float: right;
+}
+
+.post-view span.tags a {
+  margin-right: 4px;
+}
+
+hr {
+  margin-top: 1.5%;
+}
