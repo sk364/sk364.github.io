@@ -5,6 +5,7 @@
   height: 50px;
   background: #515151;
   color: white;
+  font-size: 14px;
 }
 
 .nav-bar .nav-items {
@@ -14,10 +15,27 @@
 
 .nav-bar .brand {
   align-self: center;
-  cursor: pointer;
+  font-size: 20px;
 }
 
 .nav-bar .nav-items .nav-item {
-  margin-left: 71px;
+  margin-left: 20px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar .nav-items .nav-item .icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.nav-bar .nav-items .nav-item .icon.resume {
+  filter: invert(1);
+}
+
+.nav-bar .nav-items .nav-item a {
+  text-decoration: none;
+  color: white;
 }
