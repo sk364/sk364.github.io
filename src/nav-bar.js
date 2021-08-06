@@ -1,9 +1,7 @@
 import "./nav-bar.css";
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
-  const history = useHistory();
 
   const items = [{
     id: "resume",
@@ -34,7 +32,7 @@ const NavBar = () => {
             <div className="nav-item" key={item.id}>
               <img src={item.icon} className={`icon ${item.id}`} alt="icon" />
               {item.route && (
-                <a href={item.route} target="_blank">{item.name}</a>
+                <a href={item.route} target="_blank" rel="noreferrer">{item.name}</a>
               )}
             </div>
           );

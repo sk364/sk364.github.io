@@ -1,7 +1,6 @@
 import "./post-list.css";
 
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import PostView from "./post-view";
 import Search from "./search";
