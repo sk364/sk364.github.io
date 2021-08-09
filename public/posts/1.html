@@ -1,121 +1,116 @@
-<div class="container">
-  <div class="post-title">{title}</div>
-  <div class="post-bait">{bait}</div>
-  <div class="post-reading-time">{numMinRead} min read</div>
-  <div class="post-published-since">{publishedSince}</div>
-  <div class="post-tags">{tags}</div>
-  <div class="post-image">
-    <img src="./1.jpg" />
-  </div>
-  <div class="post-paragraph">
-    One of the amazing utilities provided by Github is Github Pages. Any Github repository can now have a website in a few simple steps. The best part is that you can leverage `create-react-app` to host anything powered with React. Why React? React is fairly simple to use, easier to build dynamica applications with reusable components. It speeds up the development by a really good margin. Also, the community support is huge, giving us tons of libraries to quickly set up your app.
-  </div>
-
-  <div class="post-paragraph">
-    create-react-app is one of the best tools to quick start the workflow. It saves time and sets up the folder structure for your project.
-
-    Follow the steps below to learn how to deploy a React app created using create-react-app to Github Pages:
-  </div>
-
-  <ol>
-    <li>
-      <div>Create a react app</div>
-      <div class="post-code">
-        npx create-react-app github-page-app
-
-        cd github-page-app
-      </div>
-      <div>
-        This will create a directory named "github-page-app" with a CRA boilerplate code in it.
-      </div>
-    </li>
-    <li>
-      <div>Let's check out if it is working fine</div>
-      <div class="post-code">
-        yarn start
-        # or,
-        npm run start
-      </div>
-      <div>This should automatically open a tab in your browser pointing to localhost:3000. Ctrl + C to stop the server.</div>
-    </li>
-    <li>
-      <div>
-        Open `package.json` and add key "homepage" with value "https://username.github.io/repository-name" (update the username and repository-name)
-      </div>
-      <div class="post-code">
-        {
-            "name": "github-page-app",
-            // add homepage
-            "homepage": "https://username.github.io/repository-name"
-        }
-      </div>
-    </li>
-    <li>
-      <div>Install gh-pages library. This will be used to publish the website.</div>
-      <div class="post-code">
-        yarn add -D gh-pages
-        npm i --save-dev gh-pages
-      </div>
-    </li>
-    <li>
-      <div>Open `package.json` once again and add the following to the "scripts" key:</div>
-      <div class="post-code">
-        "scripts": {
-            "predeploy": "yarn build", // alternatively, 'npm run build',
-            "deploy": "gh-pages -d build"
-        }
-      </div>
-      <div>"predeploy" script will always run right before the "deploy" script, which will be building the app into the "build" directory.</div>
-    </li>
-    <li>
-      <div>Now, create an empty <a href="https://github.com/" target="_blank">Github</a> repository and copy its URL.</div>
-    </li>
-    <li>
-      <div>Back to the terminal, run the following command to add the remote URL.</div>
-      <div class="post-code">
-        git remote add origin "copied url"
-      </div>
-    </li>
-    <li>
-      <div>Commit and push the changes.</div>
-      <div class="post-code">
-        git add package.json
-        git commit
-        git push origin main
-      </div>
-    </li>
-    <li>
-      <div>It's time to deploy the app.</div>
-      <div class="post-code">
-        yarn deploy
-      </div>
-      <div>
-        This command will make use of gh-pages command to create gh-pages branch, push build directory's contents to it and finally publishing the site. You can go to the repository's settings now. Click on "Pages" at the very bottom and there you will see that the Github Pages feature is active and using the gh-pages branch to host the site.
-      </div>
-    </li>
-    <li>
-      <div>Wait a couple of seconds and load the url: <a href="https://username.github.io/repository-name" target="_blank">https://username.github.io/repository-name</a></div>
-    </li>
-  </ol>
-
-  <div class="post-paragraph">
-    Everytime you make any change in the app, run `yarn deploy` to publish the changes.
-  </div>
-
-  <div class="post-paragraph">
-    If you want to host the user site, instead of the project site, then make sure the repository name is username.github.io and homepage (step #3) & site URL (step #10) will be https://username.github.io
-  </div>
-
-  <div class="post-paragraph">
-    Already have a user site built using create-react-app? You will face a conflict if you have same directory structure inside the `build` directory. Hacky way to fix this is to rename the build/static directory to build/static2 and then update the build/asset-manifest.json to replace all occurrences of static with static2. Change directory to build and run this command:
-  </div>
-  <div class="post-code">
-    find . -type f -exec sed -i 's/static/static2/g' {} +
-  </div>
-
-  <div class="post-paragraph">
-    Click <a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app" target="_blank" />here</a> to learn more about create-react-app and <a href="https://www.npmjs.com/package/gh-pages" target="_blank" />here</a> to learn more about gh-pages.
-  </div>
-
-  <div class="post-paragraph">What are you waiting for now? Go back to the editor and start hacking!</div>
+<div class="post-image">
+  <img src="https://drive.google.com/uc?id=1Im_nro4EXwSVoQSSt-3xO1YhRWLcJ8yK" />
+  <div class="caption">Source: <a href="https://imgflip.com" target="_blank">imgflip.com</a></div>
 </div>
+<div class="post-paragraph">
+  One of the amazing utilities provided by Github is Github Pages. Any Github repository can now have a website in a few simple steps. The best part is that you can leverage <code>create-react-app</code> to host anything powered with React. Why React? React is fairly simple to use, easier to build dynamic applications with reusable components. It speeds up the development by a really good margin. Also, the community support is huge, giving us tons of libraries to quickly set up your app.
+</div>
+
+<div class="post-paragraph">
+  <code>create-react-app</code> is one of the best tools to quick start the workflow. It saves time and sets up the folder structure for your project.
+
+  Follow the steps below to learn how to deploy a React app created using create-react-app to Github Pages:
+</div>
+
+<ol>
+  <li>
+    <div>Create a react app</div>
+    <div class="post-code">
+npx create-react-app github-page-app npx create-react-app github-page-app npx create-react-app github-page-app
+
+cd github-page-app
+    </div>
+    <div>
+      This will create a directory named "github-page-app" with a CRA boilerplate code in it.
+    </div>
+  </li>
+  <li>
+    <div>Let's check out if it is working fine</div>
+    <div class="post-code">
+yarn start
+# or,
+npm run start
+    </div>
+    <div>This should automatically open a tab in your browser pointing to localhost:3000. Ctrl + C to stop the server.</div>
+  </li>
+  <li>
+    <div>
+      Open <code>package.json</code> and add key "homepage" with value "https://username.github.io/repository-name" (update the username and repository-name)
+    </div>
+    <div class="post-code">
+{
+    "name": "github-page-app",
+    // add homepage
+    "homepage": "https://username.github.io/repository-name"
+}
+    </div>
+  </li>
+  <li>
+    <div>Install <code>gh-pages</code> library. This will be used to publish the website.</div>
+    <div class="post-code">
+yarn add -D gh-pages
+npm i --save-dev gh-pages
+    </div>
+  </li>
+  <li>
+    <div>Open <code>package.json</code> once again and add the following to the "scripts" key:</div>
+    <div class="post-code">
+"scripts": {
+    "predeploy": "yarn build",    // alternatively, 'npm run build',
+    "deploy": "gh-pages -d build"
+}
+    </div>
+    <div>"predeploy" script will always run right before the "deploy" script, which will be building the app into the "build" directory.</div>
+  </li>
+  <li>
+    <div>Now, create an empty <a href="https://github.com/new" target="_blank">Github</a> repository and copy its URL.</div>
+  </li>
+  <li>
+    <div>Back to the terminal, run the following command to add the remote URL.</div>
+    <div class="post-code">
+git remote add origin "copied url"
+    </div>
+  </li>
+  <li>
+    <div>Commit and push the changes.</div>
+    <div class="post-code">
+git add package.json
+git commit
+git push origin main
+    </div>
+  </li>
+  <li>
+    <div>It's time to deploy the app.</div>
+    <div class="post-code">
+yarn deploy
+    </div>
+    <div>
+      This command will make use of gh-pages command to create gh-pages branch, push build directory's contents to it and finally publishing the site. You can go to the repository's settings now. Click on "Pages" at the very bottom and there you will see that the Github Pages feature is active and using the gh-pages branch to host the site.
+    </div>
+  </li>
+  <li>
+    <div>Wait a couple of seconds and load the url: <a href="https://username.github.io/repository-name" target="_blank">https://username.github.io/repository-name</a></div>
+  </li>
+</ol>
+
+<div class="post-paragraph">
+  Everytime you make any change in the app, run <code>yarn deploy</code> to publish the changes.
+</div>
+
+<div class="post-paragraph">
+  If you want to host the user site, instead of the project site, then make sure the repository name is username.github.io and homepage (step #3) & site URL (step #10) will be https://username.github.io
+</div>
+
+<div class="post-paragraph">
+  Already have a user site built using create-react-app? You will face a conflict if you have same directory structure inside the <code>build</code> directory. Hacky way to fix this is to rename the build/static directory to build/static2 and then update the build/asset-manifest.json to replace all occurrences of static with static2. Change directory to build and run this command:
+</div>
+<div class="post-code">
+  find . -type f -exec sed -i 's/static/static2/g' {} +
+
+</div>
+
+<div class="post-paragraph">
+  Click <a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app" target="_blank" />here</a> to learn more about create-react-app and <a href="https://www.npmjs.com/package/gh-pages" target="_blank" />here</a> to learn more about gh-pages.
+</div>
+
+<div class="post-paragraph">What are you waiting for now? Go back to the editor and start hacking! :D</div>

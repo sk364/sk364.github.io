@@ -1,18 +1,19 @@
 .post-detail {
-  background-color: #e8f4f8;
   margin: 1% 5% 5% 5%;
   border: 1px solid #e4e4e4;
   padding: 30px;
+  color: #303436;
+  border-radius: 4px;
 }
 
-.post-detail .right-circle:after {
-  content: ' \25CF ';
-  font-size: 10px;
-  margin-left: 3px;
+.post-header {
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .post-title {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -23,19 +24,19 @@
 
 .post-reading-time {
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .post-published-since {
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .post-tags {
   color: #0645AD;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .post-quote {
@@ -43,14 +44,44 @@
 }
 
 .post-image {
+  margin: 10px 0;
+}
 
+.post-image {
+  margin: 14px 0;
 }
 
 .post-image img {
+  display: block;
+  margin: 0 auto;
+}
 
+.post-image .caption {
+  text-align: center;
+  color: gray;
+  font-size: 12px;
 }
 
 .post-code {
-  background-color: lightgray;
-  white-space: pre-wrap
+  background-color: #263238;
+  white-space: pre-wrap;
+  color: white;
+  font-size: 16px;
+  margin: 14px 0;
+  width: 800px;
+  padding: 0 20px;
+  border-radius: 4px;
+}
+
+.post-paragraph {
+  margin: 14px 0;
+  font-size: 20px;
+}
+
+ol {
+  font-size: 20px;
+}
+
+ol li {
+  margin: 14px 0;
 }

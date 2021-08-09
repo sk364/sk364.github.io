@@ -16,24 +16,28 @@ const PostDetail = ({ match }) => {
     fetch(`posts/${id}.html`).then(data => data.text()).then(data => setContent(data));
   }, [id]);
 
-  const formatContent = () => {
-    const tagString = getTagString(tags);
-    const publishedSince = computeRecordPublishedSince(publishedAt);
-
-    return content
-      .replaceAll("{title}", title)
-      .replace("{bait}", bait)
-      .replace("{tags}", tagString)
-      .replace("{numMinRead}", numMinRead)
-      .replace("{publishedSince}", publishedSince);
-  };
-
-  const htmlContent = formatContent();
+  const tagString = getTagString(tags);
+  const publishedSince = computeRecordPublishedSince(publishedAt);
 
   return(
     <>
       <NavBar />
-      <div className="post-detail">{ parse(htmlContent) }</div>
+      <div className="post-detail">
+        <div className="container">
+          <div className="post-header">
+            <div className="post-title-container">
+              <div className="post-title">{title}</div>
+              <div className="post-bait">{bait}</div>
+            </div>
+            <div className="post-metadata">
+              <div className="post-reading-time right-circle">{numMinRead} min read</div>
+              <div className="post-published-since">{publishedSince}</div>
+              <div className="post-tags">{tagString}</div>
+            </div>
+          </div>
+          { parse(content) }
+        </div>
+      </div>
     </>
   );
 };
