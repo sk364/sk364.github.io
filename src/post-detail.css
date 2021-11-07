@@ -12,6 +12,46 @@
   justify-content: space-between;
 }
 
+.post-sub-heading {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.post-sub-heading.accordion {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.accordion {
+  position: relative;
+}
+
+.accordion-content.hidden {
+  display: none;
+}
+
+.accordion::before {
+  content: "\A";
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent black;
+  position: absolute;
+  left: -23px;
+  top: 3px;
+  transform: rotate(90deg);
+}
+
+.accordion.accordion-closed::before {
+  content: "\A";
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent black;
+  position: absolute;
+  left: -23px;
+  top: 3px;
+  transform: rotate(0deg);
+}
+
 .post-title {
   font-size: 30px;
   font-weight: bold;

@@ -16,6 +16,32 @@ const PostDetail = ({ match }) => {
     fetch(`posts/${id}.html`).then(data => data.text()).then(data => setContent(data));
   }, [id]);
 
+  useEffect(() => {
+    if (content) {
+      const accordions = document.getElementsByClassName("accordion");
+      const accordionContents = document.getElementsByClassName("accordion-content");
+
+      for (let idx = 0; idx < accordionContents.length; idx++) {
+        const acc = accordions[idx];
+        acc.onclick = () => {
+          const accContent = accordionContents[idx];
+
+          if (accContent.classList.contains("hidden")) {
+            accContent.classList.remove("hidden");
+          } else {
+            accContent.classList.add("hidden");
+          }
+
+          if (acc.classList.contains("accordion-closed")) {
+            acc.classList.remove("accordion-closed");
+          } else {
+            acc.classList.add("accordion-closed");
+          }
+        };
+      }
+    }
+  }, [content]);
+
   const tagString = getTagString(tags);
   const publishedSince = computeRecordPublishedSince(publishedAt);
 
