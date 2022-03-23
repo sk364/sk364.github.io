@@ -15,4 +15,4 @@ export const computeRecordPublishedSince = publishedAt => {
   return publishedSince;
 };
 
-export const getTagString = tagList => tagList.map(tag => `#${tag}`).join(" ");
+export const getTagString = tagList => tagList && tagList.map(tag => `#${tag}`).join(" ");

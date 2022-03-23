@@ -15,6 +15,7 @@
 .post-sub-heading {
   font-size: 24px;
   font-weight: 500;
+  margin-top: 30px;
 }
 
 .post-sub-heading.accordion {
@@ -115,7 +116,7 @@
 
 .post-paragraph {
   margin: 14px 0;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 ol {
@@ -124,4 +125,11 @@ ol {
 
 ol li {
   margin: 14px 0;
+  font-size: 16px;
+}
+
+.post-note {
+  font-style: italic;
+  margin: 5px 0;
+  font-size: 16px;
 }

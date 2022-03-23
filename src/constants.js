@@ -6,5 +6,13 @@ export const POSTS = [
     tags: ["tutorial", "react", "github"],
     numMinRead: 3,
     publishedAt: "2021-08-07T00:00:00",
+  },
+  {
+    id: 4,
+    title: "Finding research papers",
+    bait: "",
+    tags: ["programming", "project", "utility", "python"],
+    numMinRead: 10,
+    publishedAt: "2022-03-23T20:27:00",
   }
 ];

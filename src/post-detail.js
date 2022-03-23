@@ -9,7 +9,7 @@ import { getTagString, computeRecordPublishedSince } from "./utils";
 const PostDetail = ({ match }) => {
   const { id } = match.params;
   const post = POSTS.find(_post => _post.id.toString() === id);
-  const { title, bait, tags, publishedAt, numMinRead } = post;
+  const { title, bait, tags, publishedAt, numMinRead } = post || {};
   const [content, setContent] = useState("");
 
   useEffect(() => {
