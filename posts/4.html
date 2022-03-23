@@ -1,0 +1,78 @@
+
+<div class="post-image">
+  <img src="https://drive.google.com/uc?id=1D6zuyboqI1a829OI3OqEnbH6JGXqM2xD" />
+  <div class="caption">Source: <a href="https://imgflip.com" target="_blank">imgflip.com</a></div>
+</div>
+
+<div class="post-paragraph">
+  A research paper is a piece of academic writing containing original research results or an interpretation of existing results. Each paper generally starts with an abstract (~150-250 words long), summarizing the paper. The rest of the paper can contain an introduction, related work, methodologies, evaluations, conclusion, future work, references, and many other sections as needed for their work. Considering the number of papers published in a certain field itself is quite enormous, scanning through the abstracts itself is quite a tedious task, forget the rest of the paper.
+</div>
+
+<div class="post-paragraph">
+  This creates a problem for the researchers to search for relevant work in their fields. While many journals do provide an input box to filter the repository of papers, it still doesn't solve the issue as most websites do a direct/substring match of the search terms in the list of papers. This requires a search engine that can do a meaningful search. The New Papers application does exactly that to provide a web interface as a search engine, allowing the user to put in the queries and get the relevant papers.
+</div>
+
+<div class="post-sub-heading">
+  How does it work?
+</div>
+<div class="post-paragraph">
+  The application uses Transformer based model AllenAI's SPECTER to produce vector embeddings of the combination of title and abstract of each paper. These vector embeddings are then stored as a pickle file. This is done as a pre-processing step.
+</div>
+
+<div class="post-paragraph">
+  <div>To summarize, pre-processing steps are:</div>
+  <ol>
+    <li>Extract the data from the downloaded arXiv data on Kaggle.</li>
+    <li>Clean the data containing missing values.</li>
+    <li>Filter papers by the relevant years.</li>
+    <li>Transform the data, adding in one-hot encoded paper's category columns.</li>
+    <li>Derive a list of strings where each string is a concatenation of the title and abstract of each paper.</li>
+    <li>Using sentence transformer model with pre-trained AllenAI's SPECTER, convert each sentence into an embedding tensor.</li>
+    <li>Pickle the tensor.</li>
+  </ol>
+</div>
+
+<div class="post-paragraph">
+  Now, when the user provides the query, it is also transformed into a vector embedding. The pickled file is unpickled and then search term embedding is compared using cosine similarity with each of the pre-processed embeddings to produce a score. After sorting the papers by descending score, the API returns a JSON response containing the score and the relevant metadata of each paper to produce the list on the frontend.
+</div>
+
+<div class="post-paragraph">
+  <div>In summary, to retrieve the most similar results, do this:</div>
+  <ol>
+    <li>Unpickle the saved tensor.</li>
+    <li>Clean the data containing missing values.</li>
+    <li>Create another tensor of the user's query.</li>
+    <li>Do a semantic search of the query tensor with the saved tensor.</li>
+    <li>Loop over the top K results and return back a JSON list of papers containing metadata and similarity score.</li>
+  </ol>
+
+  <div class="post-note"><b>Note</b>: It currently outputs arXiv papers from 2019 to 2021 only.</div>
+</div>
+
+<div class="post-sub-heading">
+  Current limitations
+</div>
+<div class="post-paragraph">
+  <div>There are a few improvements that can be made to the project. Some of them are:</div>
+  <ol>
+    <li>Include more data sources for papers.</li>
+    <li>Expand the range of years.</li>
+    <li>Create another tensor of the user's query.</li>
+    <li>Include more fields to compute similarity.</li>
+    <li>Add a graph view.</li>
+  </ol>
+</div>
+
+<div class="post-note">
+  Find the whole code <a href="https://github.com/sk364/new-papers/tree/allenai-specter" target="_blank">here</a>.
+</div>
+
+<div class="post-sub-heading">
+  References
+</div>
+<ol>
+  <li>arXiv data on <a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank">Kaggle</a></li>
+  <li>Read more about SPECTER <a href="https://github.com/allenai/specter" target="_blank">here</a></li>
+  <li><a href="https://github.com/UKPLab/sentence-transformers" target="_blank">sentence-transformers</a> to create sentence embeddings.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank">cosine similarity</a> to compute similarities between two tensors.</li>
+</ol>

@@ -102,15 +102,5 @@ yarn deploy
 </div>
 
 <div class="post-paragraph">
-  Already have a user site built using create-react-app? You will face a conflict if you have same directory structure inside the <code>build</code> directory. Hacky way to fix this is to rename the build/static directory to build/static2 and then update the build/asset-manifest.json to replace all occurrences of static with static2. Change directory to build and run this command:
-</div>
-<div class="post-code">
-  find . -type f -exec sed -i 's/static/static2/g' {} +
-
-</div>
-
-<div class="post-paragraph">
   Click <a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app" target="_blank" />here</a> to learn more about create-react-app and <a href="https://www.npmjs.com/package/gh-pages" target="_blank" />here</a> to learn more about gh-pages.
 </div>
-
-<div class="post-paragraph">What are you waiting for now? Go back to the editor and start hacking! :D</div>
