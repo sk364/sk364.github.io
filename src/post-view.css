@@ -31,6 +31,7 @@
 
 .post-view span.tags a {
   margin-right: 4px;
+  text-decoration: none;
 }
 
 hr {
