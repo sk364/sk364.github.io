@@ -1,13 +1,14 @@
 import "./post-list.css";
 
-import React, { useEffect, useState } from "react";
+import _ from "lodash";
+import React, { useCallback, useEffect, useState } from "react";
 
 import PostView from "./post-view";
 import Search from "./search";
 import { POSTS } from "./constants";
 
 const PostList = ({ searchQuery }) => {
-  const [searchInputValue, setSearchText] = useState(searchQuery || "");
+  const [searchInputValue, setSearchInputValue] = useState(searchQuery || "");
   const [posts, setPosts] = useState(POSTS);
 
   const setFilteredPosts = (searchText) => {
@@ -32,22 +33,24 @@ const PostList = ({ searchQuery }) => {
   };
 
   useEffect(() => {
-    setFilteredPosts(searchInputValue);
-  }, [searchInputValue]);
-
-  useEffect(() => {
-    setSearchText(searchQuery || "");
+    setSearchInputValue(searchQuery || "");
+    setFilteredPosts(searchQuery || "");
   }, [searchQuery]);
 
   const handleChangeSearch = (searchText) => {
-    setSearchText(searchText);
+    setSearchInputValue(searchText);
   };
+
+  const handleDelayedSearch = useCallback(_.debounce((searchText) => setFilteredPosts(searchText), 500), []);
 
   return(
     <div className="post-list-container">
+      <Search searchText={searchInputValue} onChange={(val) => {
+        handleChangeSearch(val);
+        handleDelayedSearch(val);
+      }} />
       {posts.length > 0 && (
         <>
-          <Search searchText={searchInputValue} onChange={handleChangeSearch} />
           <div className="post-list">
             {posts.map((post, idx) => {
               return (
@@ -65,7 +68,7 @@ const PostList = ({ searchQuery }) => {
           </div>
         </>
       )}
-      {posts.length === 0 && <div className="no-results-msg">Temporarily down</div>}
+      {posts.length === 0 && <div className="no-results-msg">No results found for your search.</div>}
     </div>
   );
 };

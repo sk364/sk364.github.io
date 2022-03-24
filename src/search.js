@@ -7,7 +7,7 @@ const Search = ({ searchText, onChange }) => {
       type="text"
       onChange={(e) => onChange(e.target.value)}
       value={searchText}
-      placeholder="Search" />
+      placeholder="Search (use in:<tag name> to search by tags)" />
   );
 };
 
