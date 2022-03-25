@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <div className="nav-bar">
-      <div className="brand">
+      <div className="brand" style={{ cursor: "pointer" }} onClick={() => window.location.href = "/#/"}>
         Sachin Kukreja
       </div>
 

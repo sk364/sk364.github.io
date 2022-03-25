@@ -48,20 +48,23 @@ const PostDetail = ({ match }) => {
   return(
     <>
       <NavBar />
-      <div className="post-detail">
-        <div className="container">
-          <div className="post-header">
-            <div className="post-title-container">
-              <div className="post-title">{title}</div>
-              <div className="post-bait">{bait}</div>
+      <div className="post-detail-container">
+        <div className="back-btn" onClick={() => window.location.href = "/#/"}>Go back</div>
+        <div className="post-detail">
+          <div className="container">
+            <div className="post-header">
+              <div className="post-title-container">
+                <div className="post-title">{title}</div>
+                <div className="post-bait">{bait}</div>
+              </div>
+              <div className="post-metadata">
+                <div className="post-reading-time right-circle">{numMinRead} min read</div>
+                <div className="post-published-since">{publishedSince}</div>
+                <div className="post-tags">{tagString}</div>
+              </div>
             </div>
-            <div className="post-metadata">
-              <div className="post-reading-time right-circle">{numMinRead} min read</div>
-              <div className="post-published-since">{publishedSince}</div>
-              <div className="post-tags">{tagString}</div>
-            </div>
+            { parse(content) }
           </div>
-          { parse(content) }
         </div>
       </div>
     </>
