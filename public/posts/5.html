@@ -1,0 +1,67 @@
+<div class="post-image">
+  <img src="https://drive.google.com/uc?id=1Pdh0eldonRs5rllWAUr9EFtzBWowl51z" height="400" />
+</div>
+
+<div class="post-paragraph">
+  <a href="https://www.codechef.com/">CodeChef</a>, a competitive programming platform, hosts a variety of contests where programmers from around the world compete to gain points by solving problems using code. Apart from the contests, the platform also has a web IDE, practice problems, a learning section, and a discussion forum.
+</div>
+
+<div class="post-paragraph">
+  I got introduced to the platform in the early days of college. After solving a few problems, it felt like math problems crunched down by code. It was very addicting. I spent the day in, and day out thinking about the solutions. All in all, it enhanced my analytical and programming skills.
+</div>
+
+<div class="post-paragraph">
+  In the following paragraphs, I will describe a learning experience where I developed a Command Line Interface (CLI) to interact with the CodeChef platform.
+</div>
+
+<div class="post-paragraph">
+  The idea popped up when I worked on <a href="https://github.com/gautamkrishnar/socli">StackOverflow CLI</a>'s login workflow. It made sense to have a tool to check out the contests, and view and submit problems directly from the terminal, minimizing the context switches of alternating between the website and the terminal.
+</div>
+
+<div class="post-paragraph">
+  What started off as a weekend project, eventually developed into a full-fledged CLI offering interface to log in, view, and submit problems in all the supported languages, check out the list of contests, and get editorial links.
+</div>
+
+<div class="post-paragraph">
+  It would have been straightforward to finish off the project if CodeChef provided the public APIs to build such a tool, but it doesn't, so web scraping is to the rescue!
+</div>
+
+<div class="post-paragraph">
+  <div>Let's go through one of the APIs to see how it works. Take "get contests", for example. Here, you will:</div>
+
+  <ol>
+    <li>Fetch the webpage contents.</li>
+    <li>Parse the document to get the list of contests in all of the tables: future, present, and past.</li>
+    <li>Render the content in the terminal.</li>
+  </ol>
+</div>
+
+<div class="post-paragraph">
+  Getting problems or solutions was pretty much the same. But, the authentication and submission of problems take a different approach.
+</div>
+
+<div class="post-sub-heading">
+  Authentication
+</div>
+
+<div class="post-paragraph">
+  Here, the idea is to use the username/password combination to get the session data containing authentication credentials. The response was contained in the cookies, so capturing and saving them on the disk helped preserve the session for the rest of the requests.
+</div>
+
+<div class="post-sub-heading">
+  Problem Submission
+</div>
+
+<div class="post-paragraph">
+  The web interface provides a form where you choose the language and the code as the text input. You need to be logged in to do this, so a session initialized with the stored cookies helped submit such a form. After the submission, polling on the solution status API is the next step to know if the problem has been completely processed.
+</div>
+
+<hr />
+
+<div class="post-image">
+  <img src="https://drive.google.com/uc?id=1b5YcD7dsTCheHtm5Tqn70BBKQN5sjeL4" height="400" />
+</div>
+
+<div class="post-paragraph">
+  The project was a fun exercise to understand how to parse pages off the web. Learning about CLI development was a bonus! You can check out the full code <a href="https://github.com/sk364/sk364.github.io">here</a>.
+</div>

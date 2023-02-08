@@ -7,9 +7,13 @@ import PostView from "./post-view";
 import Search from "./search";
 import { POSTS } from "./constants";
 
+const sortPosts = (posts) => {
+  return posts.sort((postA, postB) => postA.publishedAt > postB.publishedAt ? -1 : 1)
+};
+
 const PostList = ({ searchQuery }) => {
   const [searchInputValue, setSearchInputValue] = useState(searchQuery || "");
-  const [posts, setPosts] = useState(POSTS);
+  const [posts, setPosts] = useState(sortPosts(POSTS));
 
   const setFilteredPosts = (searchText) => {
     if (searchText.length > 0) {
@@ -28,7 +32,7 @@ const PostList = ({ searchQuery }) => {
           }
           return found;
         });
-        setPosts(filteredPosts);
+        setPosts(sortPosts(filteredPosts));
     } else setPosts(POSTS);
   };
 
